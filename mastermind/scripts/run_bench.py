@@ -6,20 +6,22 @@ from mastermind.bench.sampler import secrets_uniform
 from mastermind.bench.evaluate import benchmark
 from mastermind.solvers.random_valid import RandomValid
 from mastermind.solvers.minimax import Minimax
+from mastermind.solvers.manual import Manual
 
 SOLVER_REGISTRY = {
     "random": RandomValid,
     "minimax": Minimax,
+    "manual": Manual,
 }
 
 def parse_args():
     ap = argparse.ArgumentParser(description="Mastermind Benchmark Runner")
     ap.add_argument("--n", type=int, default=4, help="Code-Länge")
     ap.add_argument("--k", type=int, default=6, help="Anzahl Farben (0..k-1)")
-    ap.add_argument("--repeats", type=int, default=100, help="Anzahl Geheimcodes")
+    ap.add_argument("--repeats", type=int, default=1, help="Anzahl Geheimcodes")
     ap.add_argument("--seed", type=int, default=42, help="Seed für Sampler")
-    ap.add_argument("--solvers", type=str, default="random",
-                    help="Kommagetrennte Liste: random,minimax")
+    ap.add_argument("--solvers", type=str, default="manual",
+                    help="Kommagetrennte Liste: random,minimax,manual")
     return ap.parse_args()
 
 def main():
@@ -47,7 +49,6 @@ def main():
         print("# Keine gültigen Solver angegeben.", file=sys.stderr)
         sys.exit(1)
 
-    print(rows)
     out = pd.concat(rows, ignore_index=True)
     out.to_csv(sys.stdout, index=False)
 
