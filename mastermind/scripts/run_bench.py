@@ -30,10 +30,7 @@ def parse_args():
 def main():
     args = parse_args()
     solver_names = [s.strip() for s in args.solvers.split(",") if s.strip()]
-    secrets_all = secrets_uniform(args.n, args.k, args.repeats, args.seed)
-
-    if len(secrets_all) < 2:
-        print("# Hinweis: Für Warm-up + Messung sind >=2 Secrets sinnvoll.", file=sys.stderr)
+    secrets_all = secrets_uniform(args.n, args.k, args.repeats+1, args.seed)
 
     rows = []
 
