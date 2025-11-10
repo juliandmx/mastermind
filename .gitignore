@@ -1,2 +1,7 @@
-.idea
-.venv
+# IDEs and environments
+.idea/
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
