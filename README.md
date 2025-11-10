@@ -13,12 +13,18 @@ pip install -r requirements.txt
 > `numba` ist optional. Ohne Numba läuft alles in reinem Python/NumPy, nur langsamer.
 
 ## Schnellstart
+### Manuelles Spiel
 ```bash
-# Beispiel: klassisches Mastermind (n=4, k=6) mit 200 zufälligen Geheimcodes
-python scripts/run_bench.py --n 4 --k 6 --repeats 200 --solvers random,minimax
+# Eine Runde manuell spielen, um korrekte Funktionsweise zu testen
+python -m mastermind.scripts.run_bench --n 4 --k 6 --repeats 1 --solvers manual
 ```
 
-Die Ergebnisse (Moves/Runtime) erscheinen als CSV auf STDOUT. Um sie zu speichern:
+### Alle Algorithmen testen & Plots erstellen
 ```bash
-python scripts/run_bench.py --n 4 --k 6 --repeats 200 > results.csv
+# Beispiel: klassisches Mastermind (n=4, k=6) mit 10 zufälligen Geheimcodes,
+# wobei die Ergebnisse in der csv-Datei gespeichert werden.
+python -m mastermind.scripts.run_bench --n 4 --k 6 --repeats 10 --solvers random,minimax,frequency > results.csv 
+
+# Plots erstellen
+python -m mastermind.scripts.plot_results
 ```

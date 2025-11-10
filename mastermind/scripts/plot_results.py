@@ -47,7 +47,7 @@ def read_results_robust(path: str) -> pd.DataFrame:
 
 def main():
     ap = argparse.ArgumentParser(description="Plot Mastermind benchmark results (boxplots).")
-    ap.add_argument("--csv", required=True, help="Path to results.csv")
+    ap.add_argument("--csv", default="results.csv", help="Path to results.csv")
     ap.add_argument("--outdir", default="plots", help="Directory to save PNGs")
     ap.add_argument("--logtime", action="store_true", help="Use log-scale on time_s axis")
     args = ap.parse_args()
