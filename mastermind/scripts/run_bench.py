@@ -9,12 +9,14 @@ from mastermind.solvers.random_valid import RandomValid
 from mastermind.solvers.minimax import Minimax
 from mastermind.solvers.manual import Manual
 from mastermind.solvers.frequency import Frequency
+from mastermind.solvers.entropy import Entropy
 
 SOLVER_REGISTRY = {
     "random": RandomValid,
     "minimax": Minimax,
     "manual": Manual,
     "frequency": Frequency,
+    "entropy": Entropy,
 }
 
 def parse_args():
